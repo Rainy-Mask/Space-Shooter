@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour
 { 
   Rigidbody physics;
   [SerializeField] int speed;
+  [SerializeField] int tilt; //eğim
+
   public Boundary boundary;
 
   void Start()
@@ -36,5 +38,7 @@ public class PlayerController : MonoBehaviour
       Mathf.Clamp(physics.position.z, boundary.zMin, boundary.zMax)
       );
     physics.position = position;
+
+    physics.rotation = Quaternion.Euler(0,0,physics.velocity.x * tilt);
   }
 }
