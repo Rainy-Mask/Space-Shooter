@@ -4,11 +4,17 @@ using System.Collections.Generic;
 using System.Xml.Schema;
 using UnityEngine;
 
+[System.Serializable]
+public class Boundary
+{
+  public float xMin, xMax, zMin, zMax;
+
+}
 public class PlayerController : MonoBehaviour
 { 
   Rigidbody physics;
-  public int speed;
-  public float xMin, xMax, zMin, zMax;
+  [SerializeField] int speed;
+  public Boundary boundary;
 
   void Start()
   {
@@ -24,10 +30,10 @@ public class PlayerController : MonoBehaviour
 
     physics.velocity = movement * speed;
 
-    Vector3 position = new Vector3(
-      Mathf.Clamp(physics.position.x, xMin, xMax),
+   Vector3 position = new Vector3(
+      Mathf.Clamp(physics.position.x, boundary.xMin, boundary.xMax),
       0,
-      Mathf.Clamp(physics.position.z, zMin, zMax)
+      Mathf.Clamp(physics.position.z, boundary.zMin, boundary.zMax)
       );
     physics.position = position;
   }
