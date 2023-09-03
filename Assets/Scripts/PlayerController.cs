@@ -15,7 +15,9 @@ public class PlayerController : MonoBehaviour
   Rigidbody physics;
   [SerializeField] int speed;
   [SerializeField] int tilt; //eğim
-
+  [SerializeField] float nextFire; 
+  [SerializeField] float fireRate; 
+  
   public Boundary boundary;
   public GameObject shot;
   public GameObject shotSpawn;
@@ -28,7 +30,11 @@ public class PlayerController : MonoBehaviour
 
   void Update()
   {
-    Instantiate(shot, shotSpawn.transform.position, shotSpawn.transform.rotation);
+    if (Input.GetButton("Fire1") && Time.time > nextFire)
+    {
+      nextFire = Time.time + fireRate;
+      Instantiate(shot, shotSpawn.transform.position, shotSpawn.transform.rotation);
+    }
   }
 
   void FixedUpdate()
