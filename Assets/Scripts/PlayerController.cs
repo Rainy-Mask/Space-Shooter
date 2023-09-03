@@ -17,10 +17,18 @@ public class PlayerController : MonoBehaviour
   [SerializeField] int tilt; //eğim
 
   public Boundary boundary;
+  public GameObject shot;
+  public GameObject shotSpawn;
+
 
   void Start()
   {
     physics = GetComponent<Rigidbody>();
+  }
+
+  void Update()
+  {
+    Instantiate(shot, shotSpawn.transform.position, shotSpawn.transform.rotation);
   }
 
   void FixedUpdate()
