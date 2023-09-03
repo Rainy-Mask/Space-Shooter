@@ -8,7 +8,6 @@ using UnityEngine;
 public class Boundary
 {
   public float xMin, xMax, zMin, zMax;
-
 }
 public class PlayerController : MonoBehaviour
 { 
