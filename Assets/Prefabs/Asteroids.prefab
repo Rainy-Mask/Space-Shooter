@@ -92,8 +92,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf3bc5a0d1b0f4690a6891619d66906f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosion: {fileID: 100004, guid: 2857e183f4cd3df4e9096e5b578bd32f, type: 3}
-  playerExplosion: {fileID: 100008, guid: a93496017806b7740910df5fd946f306, type: 3}
+  explosion: {fileID: 3972672322207053917, guid: d2283edc2245944398d66b363ef5d246, type: 3}
+  playerExplosion: {fileID: 4489287902050535816, guid: a93496017806b7740910df5fd946f306, type: 3}
 --- !u!114 &6212893589660553156
 MonoBehaviour:
   m_ObjectHideFlags: 0
