@@ -1,8 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
@@ -12,7 +15,22 @@ public class GameController : MonoBehaviour
     public float startSpawn;
     public float waveWait;
     public TMP_Text scoreText;
+    public TMP_Text gameOverText;
+    public TMP_Text restartText;
     public int score;
+
+    private bool gameOver;
+    private bool restart;
+    void Update()
+    {
+        if (restart == true)
+        {
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                SceneManager.LoadScene(0);
+            }
+        }
+    }
 
     IEnumerator SpawnValues()
     {
@@ -32,6 +50,12 @@ public class GameController : MonoBehaviour
             }
 
             yield return new WaitForSeconds(waveWait);
+            if (gameOver == true)
+            {
+                restartText.text = "Press 'R' for Restart";
+                restart = true;
+                break;
+            }
         }
     }
 
@@ -40,8 +64,18 @@ public class GameController : MonoBehaviour
         score += 10;
         scoreText.text = "Score: " + score;
     }
+
+    public void GameOver()
+    {
+        gameOverText.text = "Game Over";
+        gameOver = true;
+    }
     void Start()
     {
+        gameOverText.text = "";
+        restartText.text = "";
+        gameOver = false;
+        restart = false;
         StartCoroutine(SpawnValues());
     }
 
