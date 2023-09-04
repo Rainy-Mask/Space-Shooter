@@ -12,6 +12,7 @@ public class Boundary
 public class PlayerController : MonoBehaviour
 { 
   Rigidbody physics;
+  private AudioSource audioPlayer;
   [SerializeField] int speed;
   [SerializeField] int tilt; //eğim
   [SerializeField] float nextFire; 
@@ -25,6 +26,7 @@ public class PlayerController : MonoBehaviour
   void Start()
   {
     physics = GetComponent<Rigidbody>();
+    audioPlayer = GetComponent<AudioSource>();
   }
 
   void Update()
@@ -33,6 +35,7 @@ public class PlayerController : MonoBehaviour
     {
       nextFire = Time.time + fireRate;
       Instantiate(shot, shotSpawn.transform.position, shotSpawn.transform.rotation);
+      audioPlayer.Play();
     }
   }
 
