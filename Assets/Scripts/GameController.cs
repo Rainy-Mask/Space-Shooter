@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
@@ -9,6 +11,8 @@ public class GameController : MonoBehaviour
     public float spawnWait;
     public float startSpawn;
     public float waveWait;
+    public TMP_Text scoreText;
+    public int score;
 
     IEnumerator SpawnValues()
     {
@@ -29,6 +33,12 @@ public class GameController : MonoBehaviour
 
             yield return new WaitForSeconds(waveWait);
         }
+    }
+
+    public void UpdateScore()
+    {
+        score += 10;
+        scoreText.text = "Score: " + score;
     }
     void Start()
     {

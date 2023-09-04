@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
   [SerializeField] float nextFire; 
   [SerializeField] float fireRate; 
   
+  
   public Boundary boundary;
   public GameObject shot;
   public GameObject shotSpawn;
