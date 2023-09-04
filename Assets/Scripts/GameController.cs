@@ -17,6 +17,7 @@ public class GameController : MonoBehaviour
     public TMP_Text scoreText;
     public TMP_Text gameOverText;
     public TMP_Text restartText;
+    public TMP_Text quitText;
     public int score;
 
     private bool gameOver;
@@ -28,6 +29,11 @@ public class GameController : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.R))
             {
                 SceneManager.LoadScene(0);
+            }
+
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                Application.Quit();
             }
         }
     }
@@ -53,6 +59,7 @@ public class GameController : MonoBehaviour
             if (gameOver == true)
             {
                 restartText.text = "Press 'R' for Restart";
+                quitText.text = "Press 'Q' for Restart";
                 restart = true;
                 break;
             }
@@ -74,6 +81,7 @@ public class GameController : MonoBehaviour
     {
         gameOverText.text = "";
         restartText.text = "";
+        quitText.text = "";
         gameOver = false;
         restart = false;
         StartCoroutine(SpawnValues());
